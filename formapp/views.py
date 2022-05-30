@@ -15,8 +15,8 @@ def home(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             send_welcome_email(name,email)
-
-            return HttpResponse('Subscription OK!')
+            context={'name':name, 'email':email}
+            return render(request, 'formapp/succes.html', context)
        
     context = {'form': form}
     return render(request, 'formapp/subscription.html', context)
